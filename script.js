@@ -1,43 +1,37 @@
-let slider = document.getElementById("length-slider");
-let password = "";
-let isLowercase = document.getElementById("include-lowercase");
-let isUppercase = document.getElementById("include-uppercase");
-let isNumbers = document.getElementById("include-numbers");
-let isSymbols = document.getElementById("include-symbols");
-let length = slider.value; // Replaced with the slider variable
-let lowercase = isLowercase.checked;
-let uppercase = isUppercase.checked;
-let numbers = isNumbers.checked;
-let symbols = isSymbols.checked;
-let chars = "";
+function generatePassword() {
+    let password = "";
+    let chars = "";
 
-const generatePassword = () => {
-    if (!lowercase && !uppercase && !numbers && !symbols) {
-        // Simplified with logical NOT operator
-        alert("Please select at least one option");
+    if (
+        !document.getElementById("include-lowercase").checked &&
+        !document.getElementById("include-uppercase").checked &&
+        !document.getElementById("include-numbers").checked &&
+        !document.getElementById("include-symbols").checked
+    ) {
+        // alert("Please select at least one character type.");
+        document.getElementById("password").textContent = "Please select at least one character type.";
         return;
     }
 
-    password = "";
-    chars = "";
-
-    if (lowercase) {
+    if (document.getElementById("include-lowercase").checked) {
         chars += "abcdefghijklmnopqrstuvwxyz";
     }
 
-    if (uppercase) {
+    if (document.getElementById("include-uppercase").checked) {
         chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     }
 
-    if (numbers) {
+    if (document.getElementById("include-numbers").checked) {
         chars += "0123456789";
     }
 
-    if (symbols) {
+    if (document.getElementById("include-symbols").checked) {
         chars += "!@#$%^&*()_+~`|}{[]:;?><,./-=";
     }
 
-    length = parseInt(slider.value); // Parse the value to an integer
+    let slider = document.getElementById("length-slider");
+    let length = parseInt(slider.value);
+
     if (length > 128) {
         length = 128;
     }
@@ -47,8 +41,19 @@ const generatePassword = () => {
     }
 
     for (let i = 0; i < length; i++) {
-        password += chars.charAt(Math.floor(Math.random() * chars.length));
+        let char = chars.charAt(Math.floor(Math.random() * chars.length));
+        password += char;
     }
 
     document.getElementById("password").textContent = password; // Use textContent instead of innerHTML for security
-};
+
+    // Copy to clipboard
+    let copyButton = document.getElementById("copy-btn");
+    copyButton.style.display = "block";
+    copyButton.addEventListener("click", function () {
+        let copyText = document.getElementById("password")[0];
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+        navigator.clipboard.writeText(copyText.value);
+    });
+}

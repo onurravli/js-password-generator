@@ -1,0 +1,86 @@
+* {
+  font-family: sans-serif;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+.container .password {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.container .password #copy-btn {
+  display: none;
+}
+.container .password .password-text {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.container .password .password-length {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.container .password .password-copy {
+  font-size: 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.container .password .password-copy:hover {
+  text-decoration: underline;
+}
+.container .password .password-error {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: red;
+}
+.container .password .password-loader {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.container .password .password-success {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: green;
+}
+
+.main-form {
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.main-form .input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.main-form .input #length-slider {
+  width: 100%;
+}
+.main-form .input .btn {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #ccc;
+  color: #fff;
+  cursor: pointer;
+}
+.main-form .input .btn:hover {
+  background-color: #fff;
+  color: #000;
+}
+.main-form .input .btn:hover:active {
+  background-color: #000;
+  color: #fff;
+}/*# sourceMappingURL=style.css.map */

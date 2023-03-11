@@ -1,0 +1,83 @@
+*
+    font-family: sans-serif
+
+.container
+    width: 100%
+    height: 100%
+
+    .password
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: center
+        height: 100%
+        width: 100%
+
+        #copy-btn
+            display: none
+
+        .password-text
+            font-size: 32px
+            font-weight: bold
+            margin-bottom: 10px
+
+        .password-length
+            font-size: 16px
+            margin-bottom: 10px
+
+        .password-copy
+            font-size: 16px
+            margin-bottom: 10px
+            cursor: pointer
+
+            &:hover
+                text-decoration: underline
+
+        .password-error
+            font-size: 16px
+            margin-bottom: 10px
+            color: red
+
+        .password-loader
+            font-size: 16px
+            margin-bottom: 10px
+
+        .password-success
+            font-size: 16px
+            margin-bottom: 10px
+            color: green
+
+.main-form
+    display: flex
+    flex-direction: column
+    width: 600px
+    margin-left: auto
+    margin-right: auto
+
+    .input
+        margin: 10px 0
+        padding: 10px
+        border: 1px solid #ccc
+        border-radius: 5px
+        font-size: 16px
+
+        #length-slider
+            width: 100%
+
+        .btn
+            margin: 10px 0
+            padding: 10px
+            border: 1px solid #ccc
+            border-radius: 5px
+            font-size: 16px
+            background-color: #ccc
+            color: #fff
+            cursor: pointer
+
+            &:hover
+                background-color: #fff
+                color: #000
+
+                &:active
+                    background-color: #000
+                    color: #fff

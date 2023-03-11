@@ -4,7 +4,7 @@ let isLowercase = document.getElementById("include-lowercase");
 let isUppercase = document.getElementById("include-uppercase");
 let isNumbers = document.getElementById("include-numbers");
 let isSymbols = document.getElementById("include-symbols");
-let length = document.getElementById("length-slider").value;
+let length = slider.value; // Replaced with the slider variable
 let lowercase = isLowercase.checked;
 let uppercase = isUppercase.checked;
 let numbers = isNumbers.checked;
@@ -12,12 +12,8 @@ let symbols = isSymbols.checked;
 let chars = "";
 
 const generatePassword = () => {
-    if (
-        isLowercase.checked == false &&
-        isUppercase.checked == false &&
-        isNumbers.checked == false &&
-        isSymbols.checked == false
-    ) {
+    if (!lowercase && !uppercase && !numbers && !symbols) {
+        // Simplified with logical NOT operator
         alert("Please select at least one option");
         return;
     }
@@ -41,6 +37,7 @@ const generatePassword = () => {
         chars += "!@#$%^&*()_+~`|}{[]:;?><,./-=";
     }
 
+    length = parseInt(slider.value); // Parse the value to an integer
     if (length > 128) {
         length = 128;
     }
@@ -53,5 +50,5 @@ const generatePassword = () => {
         password += chars.charAt(Math.floor(Math.random() * chars.length));
     }
 
-    document.getElementById("password").innerHTML = password;
+    document.getElementById("password").textContent = password; // Use textContent instead of innerHTML for security
 };

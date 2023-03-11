@@ -1,18 +1,17 @@
-var slider = document.getElementById("length-slider");
-slider.oninput = function () {
-    var value = this.value;
-    document.getElementById("length-value").innerHTML = `Length: ${value}`;
-    // Do something with the value
-};
+let slider = document.getElementById("length-slider");
+let password = "";
+let isLowercase = document.getElementById("include-lowercase");
+let isUppercase = document.getElementById("include-uppercase");
+let isNumbers = document.getElementById("include-numbers");
+let isSymbols = document.getElementById("include-symbols");
+let length = document.getElementById("length-slider").value;
+let lowercase = isLowercase.checked;
+let uppercase = isUppercase.checked;
+let numbers = isNumbers.checked;
+let symbols = isSymbols.checked;
+let chars = "";
 
-var password = "";
-
-var isLowercase = document.getElementById("include-lowercase");
-var isUppercase = document.getElementById("include-uppercase");
-var isNumbers = document.getElementById("include-numbers");
-var isSymbols = document.getElementById("include-symbols");
-
-function generatePassword() {
+const generatePassword = () => {
     if (
         isLowercase.checked == false &&
         isUppercase.checked == false &&
@@ -24,13 +23,7 @@ function generatePassword() {
     }
 
     password = "";
-    var length = document.getElementById("length-slider").value;
-    var lowercase = isLowercase.checked;
-    var uppercase = isUppercase.checked;
-    var numbers = isNumbers.checked;
-    var symbols = isSymbols.checked;
-
-    var chars = "";
+    chars = "";
 
     if (lowercase) {
         chars += "abcdefghijklmnopqrstuvwxyz";
@@ -48,9 +41,17 @@ function generatePassword() {
         chars += "!@#$%^&*()_+~`|}{[]:;?><,./-=";
     }
 
+    if (length > 128) {
+        length = 128;
+    }
+
+    if (length < 8) {
+        length = 8;
+    }
+
     for (let i = 0; i < length; i++) {
         password += chars.charAt(Math.floor(Math.random() * chars.length));
     }
 
     document.getElementById("password").innerHTML = password;
-}
+};
